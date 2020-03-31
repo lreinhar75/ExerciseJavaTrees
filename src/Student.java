@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Student implements Comparable<Student>{
     private String name;
     private int age;
@@ -11,9 +13,19 @@ public class Student implements Comparable<Student>{
     public char getSex(){ return sex;}
     public int getAge(){ return age;}
 
-
+@Override
    public int compareTo(Student otherStudent) {
         return this.name.compareTo(otherStudent.name);
    }
 }
 
+class AgeComparator implements Comparator<Student>{
+    public int compare(Student s1, Student s2)
+    {
+        if(s1.getAge()>s2.getAge())
+            return 1;
+        if (s1.getAge()<s2.getAge())
+            return -1;
+        return 0;
+    }
+}
